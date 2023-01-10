@@ -1,0 +1,31 @@
+
+.body{
+    font-family: 'Proxima Nova', sans-serif, -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #292b2c;
+    background-color: #fff;
+}
+
+.header {
+    display: block;
+    background-color: #fff;
+    position: relative;
+    margin-top: 10px;
+}
+
+
+ol, ul {
+    margin: auto;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+a {
+    text-decoration: none;
+    font-family: 'Proxima Nova';
+    font-weight: normal;
+    color: #9797a6;
+
+}

@@ -1,10 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css'
+import Navbar from './components/navbar/Navbar';
 
-function App() {
+function App(props) {
   return (
-    
+       <header id="header" className="header">
+          <Navbar/>
+      </header>
   );
 }
 
-export default App;
+export default App;   

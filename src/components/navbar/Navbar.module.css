@@ -1,117 +1,117 @@
+/* 
+    .headerTop {
+        box-sizing: inherit;
+        height: 48px;
+        margin-bottom: -4px;
+    }
 
-.headerTop {
-    box-sizing: inherit;
-    height: 48px;
-    margin-bottom: -4px;
-}
+    .headerTopLogo {
+        max-width: 25%;
+        margin-bottom: -48px;
+    } 
 
-.headerTopLogo {
-    max-width: 25%;
-    margin-bottom: -48px;
-} 
+    .headerLogoText {
+        font-family: "Proxima Nova";
+        font-weight: 700;
+        font-size: 26px;
+        line-height: 26px;
+        text-transform: uppercase;
+        display: block;
+        color: #000;
+        margin-top: 10px;
+        letter-spacing: 2px;
+        transition: all ease .5s; 
+    }
+    .headerTopMenu {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        align-items: center;
+    }
 
-.headerLogoText {
-    font-family: "Proxima Nova";
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 26px;
-    text-transform: uppercase;
-    display: block;
-    color: #000;
-    margin-top: 10px;
-    letter-spacing: 2px;
-    transition: all ease .5s; 
-}
-.headerTopMenu {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
-}
+    .headerPhone {
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 20px;
+        color: #9797a6;
+        font-family: "Proxima Nova";
+        font-weight: 300;
+        font-size: 14px;
+    }
 
-.headerPhone {
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 20px;
-    color: #9797a6;
-    font-family: "Proxima Nova";
-    font-weight: 300;
-    font-size: 14px;
-}
+    .dropdownMenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        float: left;
+        min-width: 10rem;
+        padding: .5rem 0;
+        margin: .125rem 0 0;
+        font-size: 1rem;
+        color: #292b2c;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 0;
+    }
 
-.dropdownMenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 10rem;
-    padding: .5rem 0;
-    margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #292b2c;
-    text-align: left;
-    list-style: none;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.15);
-    border-radius: 0;
-}
+    .headerLang {
+        text-decoration: none;
+        font-size: 12px;
+        margin: 0 8px;
+        margin-top: inherit;
 
-.headerLang {
-    text-decoration: none;
-    font-size: 12px;
-    margin: 0 8px;
-    margin-top: inherit;
+    }
 
-}
+    .headerTopLine{
+        margin: 0;
+        width: 100%;
+        margin-top: 4px;
+    }
 
-.headerTopLine{
-    margin: 0;
-    width: 100%;
-    margin-top: 4px;
-}
+    .headerSecond{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 36px;
+    }
 
-.headerSecond{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 36px;
-}
+    .menuCatalog {
+        width:fit-content;
+    }
 
-.menuCatalog {
-    width:fit-content;
-}
+    .menuCatalogStatic {
+        display: flex;
+        gap: 10px;
+    }
 
-.menuCatalogStatic {
-    display: flex;
-    gap: 10px;
-}
+    .menuCatalogItem {
+        list-style-type: none;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
 
-.menuCatalogItem {
-    list-style-type: none;
-    text-transform: uppercase;
-    font-size: 14px;
-}
+    .cartWrapper {
+        width: auto;
+    }
 
-.cartWrapper {
-    width: auto;
-}
+    .cartBtnToggle {
+        padding: 0;
+        border: 2px solid #fef9f9;
+        background-color: transparent;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.cartBtnToggle {
-    padding: 0;
-    border: 2px solid #fef9f9;
-    background-color: transparent;
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icoCart {
-    width: 20px;
-}
+    .icoCart {
+        width: 20px;
+    } */

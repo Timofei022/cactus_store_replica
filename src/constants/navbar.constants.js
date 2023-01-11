@@ -6,11 +6,13 @@ const menuList = [
       itemProp: "url",
       href: "/ru/catalogue/electronic/",
       name: "Электроника",
+      parentid: 600,
     },
     {
       itemProp: "url",
       href: "/ru/catalogue/electronic/",
       name: "Телевизоры",
+      parentid: 2,
     },
     {
       itemProp: "url",
@@ -28,5 +30,6 @@ const menuList = [
       name: "Зоотовары",
     },
   ];
+
 
 module.exports = { TELEFON, menuList };

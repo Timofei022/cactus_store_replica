@@ -4,7 +4,7 @@ import Navbar from "./containers/Navbar/Navbar";
 
 function App(props) {
   return (
-    <header id="header" className="header">
+    <header>
       <Navbar />
     </header>
   );

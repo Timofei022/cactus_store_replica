@@ -1,29 +1,46 @@
 import React from "react";
-import s from "./Navbar.module.css";
-import "../../index.css";
+import { Grid } from "@mui/material";
 import { menuList } from "../../constants/navbar.constants";
+import { useState } from "react";
 
 const MenuCatalog = () => {
+  const [items, setItems] = useState([]);
+
+  const getItemsList = (parentId) => {
+    fetch(
+      `https://www.cactus.md/api/categories.ashx?cmd=submenu&parentid=${parentId}&lng=ru`
+    )
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setItems(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="col-sm-8 header__second__menu">
-      <div id="vue-catalog-menu" className={s.menuCatalog}>
-        <ul id="catalog-menu_static" className={s.menuCatalogStatic}>
-          {menuList.map((item) => (
-            <li className={s.MenuCatalogItem} key={item.name}>
-              <a
-                itemProp={item.itemProp}
-                href={item.href}
-                data-id="600"
-                className="menu-catalog__link"
-              >
-                <span itemProp="name" className="menu-catalog__text">
-                  {item.name}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div>
+      <Grid container xs={12} justify="space-evenly" spacing={1}>
+        {menuList.map((item) => (
+          <Grid item xs={1}>
+            <div
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                width: "100",
+                height: "100",
+              }}
+              key={item.name}
+              onClick={() => getItemsList(item.parentid)}
+            >
+              {item.name}
+            </div>
+          </Grid>
+        ))}
+        {JSON.stringify(items)}
+      </Grid>
     </div>
   );
 };

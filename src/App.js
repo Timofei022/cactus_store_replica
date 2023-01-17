@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState }  from "react";
 import "./index.css";
 import Navbar from "./containers/Navbar/Navbar";
+import MenuCatalog from "./components/Navbar/MenuCatalog";
+
+
+
+
+
+
 
 function App(props) {
+
+
+
   return (
-    <header id="header" className="header">
+    <>
       <Navbar />
-    </header>
+    </>
   );
 }
 

@@ -1,4 +1,16 @@
 
+.appBar {
+    background-color: #fff;
+}
+
+.NavBar {
+    color: #000;
+    background-color: #fff;
+
+}
+
+
+
 .headerTop {
     box-sizing: inherit;
     height: 48px;

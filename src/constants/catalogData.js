@@ -1,6 +1,7 @@
 
 const electronics = [
         {
+        "ID": 3000,
         "Name": "Популярное",
         "IsPopular": true,
         "Submenu": [
@@ -623,6 +624,7 @@ const electronics = [
 const appliances = [
         
     {
+    "ID": 3001,
     "Name": "Популярное",
     "IsPopular": true,
     "Submenu": [
@@ -1196,6 +1198,7 @@ const appliances = [
 
 const sports = [
     {
+    "ID": 3002,
     "Name": "Популярное",
     "IsPopular": true,
     "Submenu": [

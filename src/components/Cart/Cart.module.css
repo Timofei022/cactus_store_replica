@@ -97,6 +97,7 @@
 
 .cartWrapper {
     width: auto;
+    padding-right: 10px;
 }
 
 .cartBtnToggle {

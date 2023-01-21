@@ -1,7 +1,7 @@
-const TELEFON = "060-956-120";
+const TELEPHONE = "060-956-120";
 
 
 
 
 
-module.exports = { TELEFON, };
+module.exports = { TELEPHONE, };

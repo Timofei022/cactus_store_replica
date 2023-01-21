@@ -12,22 +12,22 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import catalogData from '../../constants/catalogData';
+import catalogData, { categories } from '../../constants/catalogData';
 import s from '../../components/Navbar/AppBar.module.css'
-import { Paper } from '@mui/material';
-import MenuCatalog from '../../components/Navbar/MenuCatalog';
+import Logo from '../../components/Navbar/Logo';
+import { Grid, Icon } from '@mui/material';
+import Cart from '../../components/Cart/Cart';
+import Dropdown from '../../components/Navbar/Dropdown'
+import { TELEPHONE } from '../../constants/navbar.constants';
 
-const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
-function Navbar() {
+
+function Navbar( { openMenuCatalog, setIndex } ) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [openMenuCatalog, setOpenMenuCatalog] = useState(false)
   const anchorRef = useRef(null);
-
-  let arrIndex = 0
 
 
   const handleOpenNavMenu = (event) => {
@@ -41,11 +41,12 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
-  const handleOpenCategoryMenu = () => {
-    
+  const handleOpenMenuCatalog = (index) => {
 
-    // handleCloseNavMenu();
-    setOpenMenuCatalog(prevOpen => !prevOpen)
+    setIndex(index)
+
+    handleCloseNavMenu();
+    openMenuCatalog( prev => !prev )
   }
 
   const handleCloseUserMenu = () => {
@@ -55,11 +56,13 @@ function Navbar() {
 
   return (
     <AppBar position="static" color="inherit" className={s.appBar}>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+      <Container maxWidth="xl" ref={ anchorRef }>
+        <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={1}>
+
+          <Box gridColumn="span 2" >
 
           {/*Лого и название сайта - md (большой)*/}
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             fontFamily="inherit"
             variant="h6"
@@ -76,7 +79,46 @@ function Navbar() {
             }}
           >
             Cactus
-          </Typography>
+          </Typography> */}
+          <Logo />
+           
+          </Box>
+
+          <Box gridColumn="span 10" className={s.headerTop} >
+
+            {/* Лого и название сайта - xs (маленький)
+          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Typography
+            variant="h5"
+            noWrap
+            component="a"
+            href=""
+            sx={{
+              mr: 2,
+              display: { xs: 'flex', md: 'none' },
+              flexGrow: 1,
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            Cactus
+          </Typography> */}
+
+                <a href="tel:+37360956120" className={s.headerPhone}>
+                  {TELEPHONE}
+                </a>
+                <Dropdown />
+
+
+          <div className={s.headerTopLine} />
+          </Box>
+
+
+          <Box gridColumn="span 2" className={s.headerSecond} ></Box>
+          <Box gridColumn="span 10" className={s.headerSecond}  >
 
           {/*Меню категорий - xs (маленький)*/}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -108,53 +150,36 @@ function Navbar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {catalogData.categories.map( category => (
-                <MenuItem ref={anchorRef} key={category} onClick={handleOpenCategoryMenu}>
+              {catalogData.categories.map( (category, index) => (
+                <MenuItem 
+                  key={category} 
+                  onClick={() => handleOpenMenuCatalog(index) }>
                   <Typography textAlign="center">{category}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-          {/*Лого и название сайта - xs (маленький)*/}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Cactus
-          </Typography>
-
           {/*Меню категорий md*/}
-          <Box ref={anchorRef} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box  ref={ anchorElNav } sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {catalogData.categories.map(category => (
               <Button
                 key={category}
-                onClick={handleOpenCategoryMenu}
+                onClick={() => handleOpenMenuCatalog(categories.indexOf(category))}
                 sx={{ my: 2, color: "inherit", display: 'block' }}
               >
                 {category}
               </Button>
             ))}
           </Box> 
+
+          <Cart />
     
     {/*Бокс аватара и настроек сайта*/}
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          {/* <Box sx={{ flexGrow: 0 }}> */}
+            <Tooltip title="Open settings" >
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }} >
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" className={s.userAvatar} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -179,9 +204,10 @@ function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
+
           </Box>
-        </Toolbar>
-        <MenuCatalog openList={openMenuCatalog} setOpenList={setOpenMenuCatalog} anchorRef={anchorRef} arrIndex={arrIndex}/>
+
+        </Box>
       </Container>
     </AppBar>
   );

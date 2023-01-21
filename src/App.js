@@ -1,12 +1,7 @@
-import React, { useState }  from "react";
+import React from "react";
 import "./index.css";
 import Navbar from "./containers/Navbar/Navbar";
-import MenuCatalog from "./components/Navbar/MenuCatalog";
-
-
-
-
-
+import Header from "./containers/Header/Header";
 
 
 function App(props) {
@@ -15,7 +10,7 @@ function App(props) {
 
   return (
     <>
-      <Navbar />
+    <Header />
     </>
   );
 }

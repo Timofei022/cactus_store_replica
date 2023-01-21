@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import s from "./Navbar.module.css";
+import s from "./AppBar.module.css";
 
-const NavbarLogo = () => {
+const Logo = () => {
   function join(arr) {
     return arr.join(" ");
   }
@@ -17,4 +17,4 @@ const NavbarLogo = () => {
   );
 };
 
-export default NavbarLogo;
+export default Logo;

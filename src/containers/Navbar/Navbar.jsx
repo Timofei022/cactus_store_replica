@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
@@ -11,11 +10,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import catalogData, { categories } from '../../constants/catalogData';
+import { data } from '../../constants/catalogData';
 import s from '../../components/Navbar/AppBar.module.css'
 import Logo from '../../components/Navbar/Logo';
-import { Grid, Icon } from '@mui/material';
 import Cart from '../../components/Cart/Cart';
 import Dropdown from '../../components/Navbar/Dropdown'
 import { TELEPHONE } from '../../constants/navbar.constants';
@@ -24,7 +21,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
 
-function Navbar( { openMenuCatalog, setIndex } ) {
+function Navbar( { openMenuCatalog, setCategory, showBackdrop } ) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const anchorRef = useRef(null);
@@ -41,12 +38,13 @@ function Navbar( { openMenuCatalog, setIndex } ) {
     setAnchorElNav(null);
   };
 
-  const handleOpenMenuCatalog = (index) => {
+  const handleOpenMenuCatalog = (category) => {
 
-    setIndex(index)
+    setCategory(category)
 
     handleCloseNavMenu();
     openMenuCatalog( prev => !prev )
+    showBackdrop(prev => !prev)
   }
 
   const handleCloseUserMenu = () => {
@@ -56,66 +54,21 @@ function Navbar( { openMenuCatalog, setIndex } ) {
 
   return (
     <AppBar position="static" color="inherit" className={s.appBar}>
-      <Container maxWidth="xl" ref={ anchorRef }>
+      <Container maxWidth="lg" ref={ anchorRef }>
         <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={1}>
 
           <Box gridColumn="span 2" >
-
-          {/*Лого и название сайта - md (большой)*/}
-          {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            fontFamily="inherit"
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Cactus
-          </Typography> */}
-          <Logo />
-           
+            <Logo />
           </Box>
 
           <Box gridColumn="span 10" className={s.headerTop} >
 
-            {/* Лого и название сайта - xs (маленький)
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Cactus
-          </Typography> */}
-
-                <a href="tel:+37360956120" className={s.headerPhone}>
+                <a href="tel:+37399956120" className={s.headerPhone}>
                   {TELEPHONE}
                 </a>
                 <Dropdown />
-
-
           <div className={s.headerTopLine} />
           </Box>
-
 
           <Box gridColumn="span 2" className={s.headerSecond} ></Box>
           <Box gridColumn="span 10" className={s.headerSecond}  >
@@ -150,10 +103,10 @@ function Navbar( { openMenuCatalog, setIndex } ) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {catalogData.categories.map( (category, index) => (
+              { Object.keys(data).map( (category) => (
                 <MenuItem 
                   key={category} 
-                  onClick={() => handleOpenMenuCatalog(index) }>
+                  onClick={() => handleOpenMenuCatalog(category) }>
                   <Typography textAlign="center">{category}</Typography>
                 </MenuItem>
               ))}
@@ -162,10 +115,10 @@ function Navbar( { openMenuCatalog, setIndex } ) {
 
           {/*Меню категорий md*/}
           <Box  ref={ anchorElNav } sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {catalogData.categories.map(category => (
+            { Object.keys(data).map(category => (
               <Button
                 key={category}
-                onClick={() => handleOpenMenuCatalog(categories.indexOf(category))}
+                onClick={() => handleOpenMenuCatalog(category)}
                 sx={{ my: 2, color: "inherit", display: 'block' }}
               >
                 {category}

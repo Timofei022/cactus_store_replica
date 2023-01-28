@@ -1,0 +1,71 @@
+.mainSearch {
+    margin-top: 50px;
+}
+
+.search {
+    background-color: white;
+    position: relative;
+}
+
+.search :global .MuiFormLabel-colorPrimary {
+    color: rgba(0,0,0,.20);
+    background-color: #fff;
+}
+ 
+.search :global .MuiFilledInput-root {
+    color: black;
+    background-color: inherit;
+}
+
+.search :global .Mui-focused {
+    transition: color 200ms rgba(0,0,0,.15) 0ms,transform 200ms black 0ms,max-width 200ms black 0ms;
+}
+
+.searchInput {
+    font-family: inherit;
+}
+
+.searchQuick {
+    list-style: none;
+    margin-bottom: 0;
+    padding: 15px 20px;
+    padding-top: 0;
+}
+
+.searchQuick_title {
+    font-size: 18px;
+    color: #bfbfbf;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 4px;
+}
+
+.searchQuick_list {
+    text-decoration: none;
+    display: flex;
+    gap: 20px;
+}
+.searchQuick_list :hover {
+    color: #286358;
+    text-decoration: underline;
+}
+
+.searchResult {
+    max-height: 250px;
+}
+
+.searchResult_subCategories {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.focused {
+    z-index: 800;
+}
+
+.displayNone {
+    display: none;
+}
+
+

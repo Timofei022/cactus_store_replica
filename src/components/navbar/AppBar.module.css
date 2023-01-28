@@ -1,7 +1,8 @@
 
 .appBar {
     background-color: #fff;
-    color: #000;
+    position: relative;
+    z-index: 200;
 }
 
 
@@ -41,10 +42,9 @@
 
 .headerPhone {
     text-decoration: none;
-    display: inline-block;
-    margin-right: 20px;
+    display: flex;
+    align-items: center;
     color: #9797a6;
-    font-family: "Proxima Nova";
     font-weight: 300;
     font-size: 14px;
 }
@@ -69,12 +69,13 @@
     border-radius: 0;
 }
 
-.headerLang {
+.btn_langSelect {
     text-decoration: none;
-    font-size: 12px;
     margin: 0 8px;
-    margin-top: inherit;
+}
 
+.btn_langSelect :global .css-1e6y48t-MuiButtonBase-root-MuiButton-root :hover {
+    background-color: inherit;
 }
 
 .headerTopLine{
@@ -92,12 +93,25 @@
 }
 
 .menuCatalog {
-    width:fit-content;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    position: absolute;
+    left: 0;
+    top: auto;
+    width: 100%;
+    z-index: 800;
+    background-color: #fff;
+    min-height: 2px;
+    overflow: hidden;
+    transform-origin: top;
+    gap: 0;
 }
 
-.menuCatalogStatic {
-    display: flex;
-    gap: 10px;
+.menuCatalog_list {
+    background-color: rgba(0, 0, 0, 0.98);
+    color: white;
+    padding: 25px;
 }
 
 .menuCatalogItem {
@@ -131,4 +145,20 @@
     color: rgba(0,0,0,.15);
     background-color: transparent;
     border: 1px solid rgba(0,0,0,.15);
+}
+
+
+
+@media screen and (min-width: 600px) {
+    .menuCatalog {
+        left: 24px;
+        width: calc(100% - 50px);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .menuCatalog {
+        left: 105px;
+        max-width: 1154px;
+    }
 }

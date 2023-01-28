@@ -619,8 +619,6 @@ const electronics = [
         },
 
     ]
-
-
 const appliances = [
         
     {
@@ -1194,8 +1192,6 @@ const appliances = [
     ]
     }
 ]
-
-
 const sports = [
     {
     "ID": 3002,
@@ -1329,11 +1325,10 @@ const sports = [
     ]
 
 
-const categories = [
-    "Электроника",
-    "Бытовая техника",
-    "Спорт и отдых",
-    
-]
+const data = {
+    Электроника: electronics,
+    "Бытовая техника": appliances,
+    "Спорт и отдых": sports,
+}
 
-module.exports = {categories, electronics, appliances, sports} 
+module.exports = { data } 

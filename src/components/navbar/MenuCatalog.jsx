@@ -1,34 +1,28 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 // import s from "./Navbar.module.css";
 import "../../index.css";
-import { Box, ClickAwayListener, Grid, Grow, Menu, MenuItem, MenuList, Paper, Popper } from "@mui/material";
-import { electronics, appliances, sports } from "../../constants/catalogData";
+import { Box, ClickAwayListener, Container, Grid, MenuItem, MenuList, Paper, } from "@mui/material";
+import { data } from "../../constants/catalogData";
 import { useState } from "react";
+import s from './AppBar.module.css'
 
 
-
-const MenuCatalog = ({ openList, setOpenList, arrIndex }) => {
+const MenuCatalog = ({ openList, setOpenList, category }) => {
 
 
   const [submenu, setSubmenu] = useState(false)
-  const [index, setIndex] = useState('')
+  const [subCategory, setSubCategory] = useState('')
 
-  const openDataMenu = () => {
-    const data = []
-    if(arrIndex === 0) {
-      data.push(...electronics)
-    } else if (arrIndex === 1) {
-      data.push(...appliances)
-    } else if (arrIndex === 2) {
-      data.push(...sports)
-    }
-
-    return data
+  const openDataMenu = (menuName) => {
+    return data[category]
   }
 
-  const openDataMenuSubmenu = (i) => {
+  const openDataMenuSubmenu = (subCategory) => {
+
+    const findSubCategory = data[category]?.find( sub => sub.Name === subCategory )
+     
     setSubmenu( true )
-    setIndex(i)
+    setSubCategory( findSubCategory )
   }
 
   const handleClose = () => {
@@ -47,10 +41,12 @@ const MenuCatalog = ({ openList, setOpenList, arrIndex }) => {
   
 
   return (
-    <Grid container spacing={1}>
+    <Container maxWidth="xl">
+      <div className={s.menuCatalog}>
+      <Grid container spacing={1}>
       
         <Grid item xs={4}>
-            <Paper>
+            <Paper className={s.menuCatalog_list}>
                 <ClickAwayListener onClickAway={handleClose} >
                   <MenuList
                     autoFocusItem={openList}
@@ -58,10 +54,10 @@ const MenuCatalog = ({ openList, setOpenList, arrIndex }) => {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    {openDataMenu().map( (item, i) => (
+                    {openDataMenu()?.map( item => (
                       <MenuItem 
                         key={item.ID} 
-                        onMouseLeave={() => openDataMenuSubmenu(i)}
+                        onMouseEnter={() => openDataMenuSubmenu(item.Name)}
                       >
                         {item.Name}
                       </MenuItem>
@@ -82,7 +78,7 @@ const MenuCatalog = ({ openList, setOpenList, arrIndex }) => {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    {openDataMenu()[index].Submenu.map( sub => (
+                    {subCategory?.Submenu?.map( sub => (
                       <MenuItem 
                       style={{display: 'inline-flex'}}
                       key={sub.ID} 
@@ -98,11 +94,10 @@ const MenuCatalog = ({ openList, setOpenList, arrIndex }) => {
         </Grid>
         }
         
-
-
-
-
       </Grid>
+      </div>
+    </Container>
+
   );
 };
 

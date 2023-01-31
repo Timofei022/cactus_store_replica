@@ -22,7 +22,7 @@ const Dropdown = () => {
     <div>
       <Button
         id="select-lang-btn"
-        className={[s.btn_langSelect, "firstColor"]}
+        className={[s.btn_langSelect, "firstColor"].join(' ')}
         onClick={handleClick}
       >
         {selLang || "RU"}

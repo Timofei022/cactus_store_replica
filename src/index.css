@@ -51,3 +51,14 @@ a {
 .secondColor {
     color: black;
 }
+
+.dominoid {
+    opacity: 1 !important;
+    transition: opacity all ease .5s;
+}
+
+.active {
+    display: block !important;
+    visibility: visible !important;
+    z-index: 10 !important;
+}

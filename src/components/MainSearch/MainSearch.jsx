@@ -6,6 +6,7 @@ import { data } from '../../constants/catalogData'
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import isEqual from '../../utils/utils';
 
 // function sleep(delay = 0) {
 //   return new Promise((resolve) => {
@@ -23,8 +24,6 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
   // useEffect(() => {
   //   if(!focus) return
 
-  //   console.log('effect');
-
   //   const handleClick = (e) => {
   //     if(!mainSearchRef.current) return
   //     if(!mainSearchRef.current.contains(e.target)) {
@@ -36,8 +35,6 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
   //   };
 
   //   document.addEventListener("click", handleClick)
-
-  //   console.log("===");
 
   //   return () => {
   //     document.removeEventListener("click", handleClick)
@@ -51,9 +48,24 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
     return sub
   }
 
-  const filteredValues = subCategories()?.filter(e => {
-    return e.Name.toLowerCase().includes(inputValue.toLowerCase())
-  })
+
+  const nameOfProducts = () => {
+    const categories = []
+    const subCategoriesList = []
+    Object.values(data).map( category => category.find(el => el.Name !== "Популярное")
+      ? categories.push(...category) 
+      : null
+    )
+
+    categories?.map( subCategory => subCategory.Submenu 
+        ? subCategoriesList?.push(...subCategory?.Submenu) 
+        : null)
+    return subCategoriesList
+  }
+
+
+  const filteredSubCategoriesList = nameOfProducts()?.filter(e => e.Name.toLowerCase().includes(inputValue.toLowerCase()))
+  
 
   const handleChangeInput = (event) => {
     setInputValue(event.target.value)
@@ -70,7 +82,7 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
 
     if(bool === false) {
       document.getElementById("search-form").classList.remove(s.focused)
-      showBackdrop(false)
+      // showBackdrop(false)
       setSearchResult(false)
       setSearchQuick(false)
 
@@ -78,7 +90,7 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
     } else {
       document.getElementById("search-form").classList.add(s.focused)
       setSearchQuick(true)
-      showBackdrop(true)
+      // showBackdrop(true)
     }
   }
 
@@ -122,10 +134,10 @@ export default function MainSearch({ focus, onOpen, onClose, showBackdrop }) {
             id="composition-menu"
             aria-labelledby="composition-button"
           >
-            { filteredValues?.map( item => (
+            { filteredSubCategoriesList?.map( (item, inx) => (
               <MenuItem
                 id='search-result-item'
-                key={item.ID} 
+                key={inx} 
               >
                 {item.Name}
               </MenuItem>
